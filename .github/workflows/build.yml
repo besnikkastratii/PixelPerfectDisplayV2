@@ -1,4 +1,4 @@
-name: Build VPQCLAN C.R APK
+name: Build VPQCLAN C.R V4 APK
 
 on:
   workflow_dispatch:
@@ -16,14 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract VPQCLAN C.R V3 project
+      - name: Extract VPQCLAN C.R V4 project
         shell: bash
         run: |
-          test -f VPQCLANCR_V3-source.zip
-          rm -rf /tmp/vpqclan-v3
-          mkdir -p /tmp/vpqclan-v3
-          unzip -q VPQCLANCR_V3-source.zip -d /tmp/vpqclan-v3
-          cp -a /tmp/vpqclan-v3/VPQCLANCR_V3/. "$GITHUB_WORKSPACE"/
+          test -f VPQCLANCR_V4-source.zip
+          rm -rf /tmp/vpqclan-v4
+          mkdir -p /tmp/vpqclan-v4
+          unzip -q VPQCLANCR_V4-source.zip -d /tmp/vpqclan-v4
+          cp -a /tmp/vpqclan-v4/VPQCLANCR_V4/. "$GITHUB_WORKSPACE"/
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -50,7 +50,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: VPQCLAN-CR-v3-debug-apk
+          name: VPQCLAN-CR-v4-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
